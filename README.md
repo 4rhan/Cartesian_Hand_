@@ -67,6 +67,11 @@ by hardware: `config.STANDARD_TRAVEL` is the only thing between a command and a
 carriage off its rail. Read
 [Known issues](docs/hardware.md#known-issues) before driving any DOF to a limit.
 
+To build one, see the [hardware README](hardware/README.md) for the bill of
+materials, CAD, print settings and assembly steps. The assembly video:
+
+[![Cartesian Hand assembly video](https://img.youtube.com/vi/W9SX5vXJZbE/hqdefault.jpg)](https://youtu.be/W9SX5vXJZbE)
+
 ## How it fits together
 
 A controller opens no serial port, never sleeps, and steps no simulator. It

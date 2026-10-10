@@ -2,7 +2,24 @@
 
 A 4-finger cartesian gripper driven by seven Feetech HLS3915M serial bus servos. This page lists everything needed to build it.
 
-<!-- Add a hero photo/video here: ![Cartesian Hand](images/hero.jpg) -->
+<img src="../media/design-cad.jpg" alt="Cartesian Hand CAD" width="380">
+
+To build the hand: print the parts, make two wire splices, give each servo an ID, assemble, then verify and zero it in software. The steps are in that order under [Assembly](#assembly), ending with [Verify and zero](#5-verify-and-zero).
+
+## Tools Needed
+
+- 3D printer (see [Print Settings](#print-settings-for-all-3dp-parts))
+- Soldering iron and solder
+- Hot air gun, for shrinking heat shrink
+- Wire cutters and wire strippers
+- Ruler, for measuring wire lengths
+- Pliers, flush snippers and small pointy tools, for removing supports
+- Screwdriver and/or Allen (hex) keys, whichever matches your screw heads, for M2 and M2.5 screws (and M3 for the optional Franka mount)
+- Tweezers, for holding small parts and wires
+- Multimeter, for checking the wires you make
+- Tape and marker, for labelling servos
+- Sandpaper (optional), for smoothing the rails if the parts do not slide smoothly
+- A computer with a USB port, running Linux (the software does not build on Windows)
 
 ## Bill of Materials
 
@@ -34,6 +51,7 @@ A 4-finger cartesian gripper driven by seven Feetech HLS3915M serial bus servos.
 | 4 | Finger | |
 | 4 | Finger tip | |
 | 7 | Gear | Press-fit into the servo horn |
+| 1 | Franka mount | Optional, only if mounting on a Franka arm. See [Notes](#notes) |
 
 ### Wires
 
@@ -90,6 +108,8 @@ The servo package includes one 150mm micro JST 1.25mm 3-pin cable per servo. You
 
 <img src="media/y_splice_diagram.svg" alt="Y-splice wire diagram" width="595">
 
+The video covers this step from [8:24](https://youtu.be/W9SX5vXJZbE?t=504) to [12:43](https://youtu.be/W9SX5vXJZbE?t=763).
+
 For each Y-splice (make two, one per gripper level):
 
 1. Take 1 pre-made wire, cut it to 50mm and strip the last 10mm.
@@ -98,20 +118,29 @@ For each Y-splice (make two, one per gripper level):
 4. Twist together the matching colors of all three wires (the 50mm trunk and the two 200mm branches).
 5. Apply minimal solder to keep the wire as flexible as possible.
 6. Slide the heat shrink over each joint and apply heat to shrink it.
+7. Check each finished splice with a multimeter in continuity mode: each pin of the trunk connector must beep to the same pin of both branch connectors, and no two different pins may beep to each other. A swapped or shorted wire can damage the servos.
 
 ### 3. Set up and label the servos
 
 Each servo needs a unique ID before assembly, matching the DoF labels in the wiring diagram below. IDs are set with the `ft_servo_tools` CLI in [`scripts/`](https://github.com/generalroboticslab/Cartesian_Hand/tree/main/scripts/ft_servo_tools) of the [Cartesian_Hand](https://github.com/generalroboticslab/Cartesian_Hand) repo.
 
-1. Connect **one servo at a time** to the driver board — `set-id` scans the bus to find its target, so more than one servo makes the choice ambiguous.
+1. Connect **one servo at a time** to the driver board. `set-id` scans the bus to find its target, so more than one servo makes the choice ambiguous.
 2. Run `python scripts/ft_servo_tools/cli.py set-id <port> <id>`, where `<port>` is your serial port (e.g. `/dev/ttyACM0`) and `<id>` is the servo's target position: 0-6, per the wiring tree diagram below. The servo jogs briefly to confirm the new ID took, then writes it to EEPROM (persists across power cycles).
 3. Label the servo body with its assigned ID (e.g. tape + marker), so it's easy to identify during assembly.
+
+| ID | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|---|
+| Joint | base jaw | base left finger | base right finger | z stage | aux jaw | aux left finger | aux right finger |
+
+The auxiliary gripper rides the z stage. The software calls these seven joints DOF 0-6; [`docs/hardware.md`](../docs/hardware.md#configuring-a-new-hand) has the axis for each.
 
 Repeat for all 7 servos before moving on. To confirm all 7 IDs are present, connect the full bus and run `python scripts/ft_servo_tools/cli.py scan <port>` (or use `... cli.py gui <port>` for a browser-based view of each servo's position, voltage and temperature).
 
 ### 4. Assemble the Cartesian Hand
 
-_Assembly video coming soon — the steps below are still a bit terse without it._
+Watch the assembly video alongside the steps below:
+
+[![Cartesian Hand assembly video](https://img.youtube.com/vi/W9SX5vXJZbE/hqdefault.jpg)](https://youtu.be/W9SX5vXJZbE)
 
 **Overall wiring structure**
 
@@ -129,13 +158,32 @@ _Assembly video coming soon — the steps below are still a bit terse without it
 5. Assemble all the pieces.
 6. Thread the Y-splice wire from the center servo on each rail to the fingers, as shown in the wiring structure diagram above.
 
-The hand is now complete.
+The hand is now mechanically complete.
+
+### 5. Verify and zero
+
+1. Connect the full servo bus, power it, and run `python scripts/ft_servo_tools/cli.py scan <port>`. All 7 IDs (0-6) should answer.
+2. Install the software (see the [main README](../README.md#installation)) and add an entry for your hand to `cartesian_hand/config.py`, following [Configuring a new hand](../docs/hardware.md#configuring-a-new-hand). Always pass `--hand my_hand`. Without it, a build with IDs 0-6 is silently treated as our lab's `hand_3`.
+3. Run `python -m cartesian_hand.studio --hand my_hand`, open http://localhost:8081, and drag each slider a few mm. Each real joint should move the same way as the 3D model. Keep the moves small. Before zeroing, 0 mm is wherever the hand started, and the far end of each rail has no hard stop, so a carriage can run off its rail.
+4. Zero the hand: `python -m cartesian_hand.studio --hand my_hand --task zero`. Zero again after every power cycle.
+5. Optional: the default travel and torque floor are starting points. To tune them for your hand, see [Configuring a new hand](../docs/hardware.md#configuring-a-new-hand).
+
+## Troubleshooting
+
+| Problem | Likely cause and fix |
+|---------|----------------------|
+| `scan` finds fewer than 7 servos | Check the Y-splice with a multimeter, and that every JST connector is fully seated. Re-run `scan` with servos connected one at a time to find the silent one. |
+| Two servos answer to the same ID | A servo was not renamed. Disconnect all but one, and run `set-id` again. |
+| A joint moves the wrong way in the studio | It is mounted differently from ours. See [DOF indexing](../docs/hardware.md#dof-indexing-and-orientation) before changing anything. |
+| A finger or jaw binds or scrapes along its rail | Support interface not removed completely, or the print tolerance is too tight for your printer. Clean the dovetail, lightly sand the rails (see the [video](https://youtu.be/W9SX5vXJZbE?t=345)), or raise the slide tolerance in the Fusion360 file and reprint. |
+| Gear teeth skip or strip | Gears are PLA only. Never move the grippers by hand quickly. Reprint the gear and press-fit it again. |
+| Zeroing aborts | A joint never stalled against its hard stop. Nothing is written, and the previous calibration stays. Check for a jammed carriage, then see [Zeroing](../docs/hardware.md#zeroing). |
 
 ## Files
 
-- `CAD/`: step files for each part and Fusion360 design file
+- `CAD/`: step files for each part (`base gripper rail`, `auxiliary gripper rail`, `finger`, `finger tip`, `gear`, `franka_mount`) and the Fusion360 design files (`cartesian_hand_v14_latest.f3z`, `franka_mount.f3d`)
 - `media/`: media supporting assembly instructions
 
 ## Notes
 
-- The mounting is designed for the Duke Humanoid V2. Feel free to change it in the CAD or adapt your own — see `franka_mount` in the CAD folder for reference. It's 3D-printed as well, and the hand is mounted with M3 screws that will self-tap into the printed franka_mount.
+- The mounting is designed for the Duke Humanoid V2. Feel free to change it in the CAD or adapt your own. See `franka_mount` in the CAD folder for reference. It's 3D-printed as well, and the hand is mounted with M3 screws that will self-tap into the printed franka_mount.
