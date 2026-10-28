@@ -9,16 +9,24 @@ typed observation and returns goal, speed, and effort every tick. What differs
 between here and hardware is the adapter around either controller -- `mj_step`
 and a `qpos` read where the other has `set_positions` and `read_all`.
 
-Deliberately not covered
-------------------------
-**Effort is dropped on the floor here.** `Motions` torque and direct-policy
-`Action.effort_limit` both reach this adapter, which cannot apply either: the
-MJCF's actuators are `<position>` with a fixed `kp`, so there is no
-per-environment force cap to write. Every
-`stop="stuck"` in a task therefore fires against a joint limit rather than
-against a grip that yields at a tuned force. That is enough to prove a task
-runs, and not enough to transfer a *force*; the sim's own README calls its
-dynamics placeholder, so the missing piece is upstream of this file.
+Grip force
+----------
+**Effort is a force cap, as on the servo.** `Motions` torque (0-1000 servo
+units) and direct-policy `Action.effort_limit` (0-1) both reach `drive`, which
+normalises them to 0-1 and hands them to the backend with the goal. The CPU
+backend writes that into `actuator_forcerange` every tick, scaled by the
+model's own full-scale force (the MJCF's +/-87 N), so `effort_limit = 0.08`
+caps a joint at 7 N. A grip now yields at a tuned force and a `stop="stuck"`
+can fire against an object rather than only against a joint limit.
+
+The scale is the weak link, not the mechanism: the 87 N is inherited from the
+sibling hand and was never measured for this one (see the `_force_note` in
+`assets/cartesian_hand/source/kinematics.json`). Torques tuned on the bench
+transfer as *ratios* until that is re-derived.
+
+`run_warp` still drops effort: `mujoco_warp` keeps `actuator_forcerange` on
+the model, shared by every world, and a per-world cap has not been wired or
+measured there.
 
 Two backends, one loop
 ----------------------
@@ -41,6 +49,9 @@ overwrite what it reported, here the physics is all there is. Stepping is also
 what applies the `<equality>` couplings, so a rack pair's follower moves on its
 own rather than needing the explicit write the studio loop does.
 """
+import dataclasses
+import time
+
 import mujoco
 import numpy as np
 import torch
@@ -52,6 +63,40 @@ from .mjcf import MM_PER_M, mjcf_path, narrow_ctrlrange, qpos_addrs
 from .motions import Task, TaskRunner
 from .policy import Policy, PolicyRunner, PolicyState
 from . import tasks
+
+SERVO_TORQUE_FULL_SCALE = 1000.0
+"""The servo `torque` register's full scale: `Motions` torque / this is the
+same 0-1 effort a direct policy's `Action.effort_limit` already is."""
+
+
+def load(xml: str | None, cfg: HandConfig
+         ) -> tuple[mujoco.MjModel, mujoco.MjData, np.ndarray]:
+    """The model ready to drive, its data, and each actuator's full-scale force.
+
+    A model with a keyframe starts from its first one: qpos 0 is the closed
+    jaw, so a scene with an object in it (`objects.write_scene`) opens the jaws
+    there rather than starting them inside the bottle.
+
+    The full-scale force is read before anything caps it: it is what effort 1
+    means, and `cap_force` overwrites the range it came from every tick.
+    """
+    model = mujoco.MjModel.from_xml_path(mjcf_path(xml))
+    narrow_ctrlrange(model, cfg)
+    full_force_n = np.abs(model.actuator_forcerange).max(axis=1)   # [nu]
+    model.actuator_forcelimited[:] = 1
+    data = mujoco.MjData(model)
+    if model.nkey:
+        mujoco.mj_resetDataKeyframe(model, data, 0)
+        mujoco.mj_forward(model, data)
+    return model, data, full_force_n
+
+
+def cap_force(model: mujoco.MjModel, full_force_n: np.ndarray,
+              effort: np.ndarray) -> None:
+    """Cap each actuator at `effort` (0-1, [nu]) of its full-scale force."""
+    cap_n = effort * full_force_n
+    model.actuator_forcerange[:, 0] = -cap_n
+    model.actuator_forcerange[:, 1] = cap_n
 
 
 def step_limit_mm(cfg: HandConfig,
@@ -96,16 +141,20 @@ def profile(goal_mm: torch.Tensor, command_mm: torch.Tensor,
 
 def drive(controller: Task | Policy, cfg: HandConfig,
           read_mm: Callable[[], torch.Tensor],
-          write_goal: Callable[[torch.Tensor], None],
+          write_goal: Callable[[torch.Tensor, torch.Tensor], None],
           advance: Callable[[], None],
           sense: Callable[[], torch.Tensor | None],
           report: Callable[[], None],
           limit_mm: torch.Tensor, hold_torque: torch.Tensor,
-          max_seconds: float) -> torch.Tensor | PolicyState:
+          max_seconds: float,
+          episode_over: Callable[[], bool] = lambda: False
+          ) -> torch.Tensor | PolicyState | None:
     """The control loop both backends run, and the only copy of it.
 
-    A backend supplies four verbs -- read millimetres, write a goal, advance the
-    physics, sample an external contact signal -- and differs in nothing else.
+    A backend supplies four verbs -- read millimetres, write a goal and its
+    effort, advance the physics, sample an external contact signal -- and
+    differs in nothing else. Effort reaches `write_goal` normalised to 0-1
+    whichever controller produced it, so a backend never sees servo units.
     Keeping the loop here is what stops a fix landing in one backend only.
 
     `report` runs after the loop and *before* the failure check, so a run that
@@ -118,6 +167,11 @@ def drive(controller: Task | Policy, cfg: HandConfig,
     exception is this backend's policy, not the task's, since a CLI that printed
     a radius after measuring nothing is worse than one that stops. A caller
     wanting the flags per env drives `TaskRunner` and reads `runner.result`.
+
+    `episode_over` ends the run early, checked after every tick, and returns
+    None: the scene, not the controller, decided it was over (a cap lifted
+    off, say), so the controller has no result to report and no failure to
+    raise.
     """
     hz = cfg.control_hz
     direct = (PolicyRunner(controller, hz)
@@ -143,17 +197,22 @@ def drive(controller: Task | Policy, cfg: HandConfig,
                        if external is not None else None)
             action = direct.tick(mm, contact)
             goal, tick_limit = action.goal_mm, action.max_speed_mm_s / hz
+            effort = action.effort_limit
         else:
             step = runner.tick(mm, external)
             if step is None:
                 break
             goal, tick_limit = step[0], limit_mm
+            effort = step[1] / SERVO_TORQUE_FULL_SCALE
         # mujoco clamps ctrl to the range `narrow_ctrlrange` set, which is what
         # turns zeroing's deliberate 120mm overtravel into "drive to the closed
         # end and lean on it" rather than an unreachable goal.
         setpoint = profile(goal, setpoint, tick_limit)
-        write_goal(setpoint)
+        write_goal(setpoint, effort.clamp(0.0, 1.0))
         advance()
+        if episode_over():
+            report()
+            return None
     else:
         raise RuntimeError(
             f"task did not finish within {max_seconds}s of simulated time")
@@ -173,17 +232,27 @@ def run(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
         swap: bool = False,
         max_seconds: float = 180.0, verbose: bool = True,
         external_signal: Callable[[mujoco.MjModel, mujoco.MjData],
-                                  torch.Tensor | None] | None = None
-        ) -> torch.Tensor | PolicyState:
+                                  torch.Tensor | None] | None = None,
+        viewer: bool = False,
+        episode_over: Callable[[], bool] = lambda: False
+        ) -> torch.Tensor | PolicyState | None:
     """CPU MuJoCo at N=1: the reference backend, and the one with no CUDA.
 
     `max_seconds` is simulated time and is a backstop, not a schedule: a task
     that ends on its own stop conditions finishes long before it, and one that
     does not is a bug worth stopping rather than a run worth waiting out.
+
+    `viewer` opens MuJoCo's passive viewer and paces the run to real time.
+    `episode_over` is `drive`'s.
+
+    Effort caps each actuator's force every tick -- see "Grip force" in the
+    module docstring.
     """
-    model = mujoco.MjModel.from_xml_path(mjcf_path(xml))
-    narrow_ctrlrange(model, cfg)
-    data = mujoco.MjData(model)
+    model, data, full_force_n = load(xml, cfg)
+    view = None
+    if viewer:
+        from mujoco import viewer as mj_viewer   # `import mujoco.viewer` here
+        view = mj_viewer.launch_passive(model, data)  # would shadow `mujoco`
 
     # One joint per DOF is enough to read: a rack pair's two joints are held
     # equal by the model's own constraint, so the follower carries no
@@ -192,29 +261,39 @@ def run(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
     substeps = max(1, round((1.0 / cfg.control_hz) / model.opt.timestep))
 
     def advance() -> None:
+        tick = time.perf_counter()
         for _ in range(substeps):
             mujoco.mj_step(model, data)
+        if view is not None:
+            view.sync()
+            time.sleep(max(0.0, 1.0 / cfg.control_hz
+                           - (time.perf_counter() - tick)))
 
-    def write_goal(goal_mm: torch.Tensor) -> None:
+    def write_goal(goal_mm: torch.Tensor, effort: torch.Tensor) -> None:
         data.ctrl[:] = goal_mm[0].numpy() / MM_PER_M
+        cap_force(model, full_force_n, effort[0].numpy())
 
     def report() -> None:
         if verbose:
             pos = " ".join(f"{v:6.1f}" for v in data.qpos[lead] * MM_PER_M)
             print(f"[sim] finished at mm [{pos} ]")
 
-    return drive(
-        controller, cfg,
-        read_mm=lambda: torch.from_numpy(
-            data.qpos[lead] * MM_PER_M).float()[None, :],
-        write_goal=write_goal,
-        advance=advance,
-        sense=lambda: external_signal(model, data) if external_signal else None,
-        report=report,
-        limit_mm=step_limit_mm(cfg),
-        hold_torque=cfg.gain_vector("torque_min_to_move")
-        .to(torch.float32)[None, :],
-        max_seconds=max_seconds)
+    try:
+        return drive(
+            controller, cfg,
+            read_mm=lambda: torch.from_numpy(
+                data.qpos[lead] * MM_PER_M).float()[None, :],
+            write_goal=write_goal,
+            advance=advance,
+            sense=lambda: external_signal(model, data) if external_signal else None,
+            report=report,
+            limit_mm=step_limit_mm(cfg),
+            hold_torque=cfg.gain_vector("torque_min_to_move")
+            .to(torch.float32)[None, :],
+            max_seconds=max_seconds, episode_over=episode_over)
+    finally:
+        if view is not None:
+            view.close()
 
 
 def run_warp(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
@@ -241,9 +320,8 @@ def run_warp(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
     that is 40 launches per tick, and the launch overhead is the loop's cost
     once the physics itself is batched.
 
-    Torque is dropped here exactly as in `run`, and for the same reason -- see
-    the module docstring. Batching does not change what the actuators can be
-    told.
+    Effort is dropped here, unlike in `run` -- see "Grip force" in the module
+    docstring.
     """
     import mujoco_warp as mjw
     import warp as wp
@@ -267,7 +345,7 @@ def run_warp(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
             mjw.step(m, d)
     graph = capture.graph
 
-    def write_goal(goal_mm: torch.Tensor) -> None:
+    def write_goal(goal_mm: torch.Tensor, effort: torch.Tensor) -> None:
         ctrl[:] = goal_mm / MM_PER_M
 
     def report() -> None:
@@ -289,13 +367,37 @@ def run_warp(controller: Task | Policy, cfg: HandConfig, xml: str | None = None,
         max_seconds=max_seconds)
 
 
+def override(task_cfg: object | None, pairs: tuple[str, ...],
+             task: str) -> object:
+    """`task_cfg` with each `FIELD=VALUE` in `pairs` applied, typed like the
+    field it replaces. Raises naming the fields there are."""
+    if task_cfg is None:
+        raise ValueError(f"task {task!r} has no Config to --set")
+    fields = {f.name: f for f in dataclasses.fields(task_cfg)}
+    changes = {}
+    for pair in pairs:
+        name, sep, value = pair.partition("=")
+        if not sep or name not in fields:
+            raise ValueError(f"--set {pair!r}: want FIELD=VALUE, FIELD one of "
+                             f"{sorted(fields)}")
+        kind = type(getattr(task_cfg, name))
+        changes[name] = (value.lower() in ("1", "true", "yes") if kind is bool
+                         else kind(value))
+        print(f"[sim] {task}.{name} = {changes[name]!r}")
+    return dataclasses.replace(task_cfg, **changes)
+
+
 def main(task: str = "zero",
          hand: str = DEFAULT_HAND,
          xml: str | None = None,
          swap: bool = False,
          max_seconds: float = 180.0,
          n_envs: int = 1,
-         warp: bool = False) -> None:
+         warp: bool = False,
+         obj: str | None = None,
+         viewer: bool = False,
+         set: tuple[str, ...] = (),
+         full_cycle: bool = False) -> None:
     """Run one task in simulation.
 
     Args:
@@ -308,6 +410,17 @@ def main(task: str = "zero",
         max_seconds: simulated-time backstop.
         n_envs: how many worlds to simulate. Above 1 implies --warp.
         warp: use the GPU `mujoco_warp` backend instead of CPU mujoco.
+        obj: an object from assets/objects/bottles.json to put in the jaws,
+            e.g. `water_500ml`. Builds its scene (overrides --xml), sets the
+            task's `cap_offset` from it, and reports whether the cap came off.
+            CPU only.
+        viewer: watch the run in MuJoCo's viewer, paced to real time. CPU only.
+        set: override fields of the task's `Config`, e.g. `--set
+            squeeze_torque=20 lift_torque=300`. Applied after --obj, so it
+            wins. Torques are servo units, 0-1000.
+        full_cycle: with --obj, keep running after the cap is lifted, through
+            the closing half the scene does not model. By default the run ends
+            the tick the cap is lifted off.
     """
     cfg = get_hand(hand)
     warp = warp or n_envs > 1
@@ -316,13 +429,38 @@ def main(task: str = "zero",
     # on the GPU is what keeps the whole tick off the host.
     device = "cuda" if warp else "cpu"
     start = torch.zeros(n_envs, cfg.n_dof, device=device)
-    controller = tasks.make(task, cfg, start)
-    result = (run_warp(controller, cfg, xml=xml, swap=swap,
-                       max_seconds=max_seconds,
-                       n_envs=n_envs, device=device) if warp else
-              run(controller, cfg, xml=xml, swap=swap,
-                  max_seconds=max_seconds))
-    if isinstance(controller, Policy):
+    monitor, kwargs = None, {}
+    if obj is not None:
+        if warp:
+            raise ValueError("--obj runs on the CPU backend only")
+        from . import objects
+        bottle = objects.load(obj)
+        xml = objects.write_scene(bottle)
+        monitor = objects.ThreadMonitor(bottle)
+        task_cfg = objects.teacher_config(tasks.config(task), bottle)
+        if task_cfg is not None:
+            kwargs["cfg"] = task_cfg
+    if set:
+        kwargs["cfg"] = override(kwargs.get("cfg") or tasks.config(task),
+                                 set, task)
+    controller = tasks.make(task, cfg, start, **kwargs)
+    try:
+        result = (run_warp(controller, cfg, xml=xml, swap=swap,
+                           max_seconds=max_seconds,
+                           n_envs=n_envs, device=device) if warp else
+                  run(controller, cfg, xml=xml, swap=swap,
+                      max_seconds=max_seconds, external_signal=monitor,
+                      viewer=viewer,
+                      episode_over=(lambda: monitor.opened)
+                      if monitor is not None and not full_cycle
+                      else lambda: False))
+    finally:
+        if monitor is not None:
+            print(monitor.summary())
+    if result is None:
+        print(f"[sim] {task}: ended when the cap was lifted (--full-cycle "
+              f"to run the closing half too)")
+    elif isinstance(controller, Policy):
         print(f"[sim] {task}: done={result.done.tolist()}, "
               f"failed={result.failed.tolist()}")
     else:

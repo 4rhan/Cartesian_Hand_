@@ -1,0 +1,2165 @@
+{
+ "_comment": "Held-out test episodes, frozen. Written by `python -m cartesian_hand.episodes --write-test`; do not edit by hand.",
+ "ranges": {
+  "spread": 0.35,
+  "log_factor": 3.0,
+  "offset_mm": 5.0,
+  "tilt_deg": 3.0
+ },
+ "bases": [
+  "water_500ml",
+  "pill_bottle"
+ ],
+ "episodes": [
+  {
+   "split": "test",
+   "index": 0,
+   "bottle": {
+    "name": "pill_bottle_test_000",
+    "body_radius": 24.19486194142881,
+    "body_height": 75.47108524071379,
+    "neck_radius": 18.54206627762917,
+    "neck_height": 7.886279116599023,
+    "cap_radius": 19.54206627762917,
+    "cap_height": 14.54660030685097,
+    "mass_g": 42.13383023570731,
+    "cap_mass_g": 5.393575100585962,
+    "thread_pitch": 3.251679668216214,
+    "turns_to_open": 0.6921642245807971,
+    "break_torque": 0.038698848702908045,
+    "friction": 0.6572255970637445,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.062944682734103,
+    "dy_mm": 0.7195672960533948,
+    "yaw_deg": 78.76263302502188,
+    "tilt_deg": 0.045515673780221366,
+    "tilt_dir_deg": 96.20141202143311
+   }
+  },
+  {
+   "split": "test",
+   "index": 1,
+   "bottle": {
+    "name": "pill_bottle_test_001",
+    "body_radius": 14.950582148881706,
+    "body_height": 52.19696460854776,
+    "neck_radius": 12.015039402391327,
+    "neck_height": 5.117450759364962,
+    "cap_radius": 14.470092063446605,
+    "cap_height": 13.396284886431143,
+    "mass_g": 66.61895164417183,
+    "cap_mass_g": 5.756771793336633,
+    "thread_pitch": 4.625839534728823,
+    "turns_to_open": 0.6797455029178924,
+    "break_torque": 0.01815858168890825,
+    "friction": 0.6780665384828233,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 3.4899450648522734,
+    "dy_mm": -4.006086499396063,
+    "yaw_deg": 300.6731063180371,
+    "tilt_deg": 0.3680020672142126,
+    "tilt_dir_deg": 34.810284094888885
+   }
+  },
+  {
+   "split": "test",
+   "index": 2,
+   "bottle": {
+    "name": "pill_bottle_test_002",
+    "body_radius": 24.8469392051901,
+    "body_height": 94.50609986216104,
+    "neck_radius": 12.5112741448139,
+    "neck_height": 6.82798383151318,
+    "cap_radius": 19.775783840833554,
+    "cap_height": 14.081847883808766,
+    "mass_g": 64.04891542829834,
+    "cap_mass_g": 4.696459391771267,
+    "thread_pitch": 3.3221236204107334,
+    "turns_to_open": 0.6213532542006042,
+    "break_torque": 0.04534562367822303,
+    "friction": 1.1512730881266569,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.17346596127730063,
+    "dy_mm": -4.133980498273586,
+    "yaw_deg": 140.0690792262609,
+    "tilt_deg": 0.7968630788862642,
+    "tilt_dir_deg": 328.1365956657404
+   }
+  },
+  {
+   "split": "test",
+   "index": 3,
+   "bottle": {
+    "name": "water_500ml_test_003",
+    "body_radius": 36.587550371705326,
+    "body_height": 70.28310756384664,
+    "neck_radius": 10.093070019185184,
+    "neck_height": 11.479577346831153,
+    "cap_radius": 11.818314291034945,
+    "cap_height": 15.462513498064538,
+    "mass_g": 145.51167662777235,
+    "cap_mass_g": 2.539500045734683,
+    "thread_pitch": 2.5389013308051784,
+    "turns_to_open": 1.3062927999845386,
+    "break_torque": 0.008878110929692163,
+    "friction": 1.0556146493900265,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.624244243276104,
+    "dy_mm": -1.7702482949078533,
+    "yaw_deg": 330.9164010650274,
+    "tilt_deg": 0.13901816772300002,
+    "tilt_dir_deg": 335.22721728137753
+   }
+  },
+  {
+   "split": "test",
+   "index": 4,
+   "bottle": {
+    "name": "water_500ml_test_004",
+    "body_radius": 27.637337813433845,
+    "body_height": 74.49938218407739,
+    "neck_radius": 9.902530610961836,
+    "neck_height": 8.630420859367288,
+    "cap_radius": 13.674896502204314,
+    "cap_height": 12.419905493698755,
+    "mass_g": 101.93434528714603,
+    "cap_mass_g": 2.405619480088628,
+    "thread_pitch": 2.427417895848543,
+    "turns_to_open": 0.6601761470100964,
+    "break_torque": 0.023727717116966144,
+    "friction": 1.0152814918354949,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -0.8688753773479494,
+    "dy_mm": -1.948271598783995,
+    "yaw_deg": 226.95852726125966,
+    "tilt_deg": 1.0352669767503673,
+    "tilt_dir_deg": 157.58165218281556
+   }
+  },
+  {
+   "split": "test",
+   "index": 5,
+   "bottle": {
+    "name": "water_500ml_test_005",
+    "body_radius": 33.83946977887444,
+    "body_height": 74.94288004192667,
+    "neck_radius": 15.401320604110275,
+    "neck_height": 15.110769371921158,
+    "cap_radius": 19.79807783392872,
+    "cap_height": 12.994207685975178,
+    "mass_g": 99.47628742767938,
+    "cap_mass_g": 3.0957720642529987,
+    "thread_pitch": 2.1611285953358776,
+    "turns_to_open": 1.3364186909029807,
+    "break_torque": 0.02234035827418593,
+    "friction": 0.8623801484204572,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -3.3942299998277035,
+    "dy_mm": 2.3414722992386716,
+    "yaw_deg": 178.7218075070367,
+    "tilt_deg": 1.4214652217957733,
+    "tilt_dir_deg": 228.04135911662001
+   }
+  },
+  {
+   "split": "test",
+   "index": 6,
+   "bottle": {
+    "name": "pill_bottle_test_006",
+    "body_radius": 21.752118188921983,
+    "body_height": 89.26349822799708,
+    "neck_radius": 22.51311823983609,
+    "neck_height": 4.6171546264098335,
+    "cap_radius": 25.73787223722852,
+    "cap_height": 11.809595296397289,
+    "mass_g": 77.72295191316792,
+    "cap_mass_g": 5.53276019246697,
+    "thread_pitch": 2.8554127267968417,
+    "turns_to_open": 0.5464240955379296,
+    "break_torque": 0.07264762706135591,
+    "friction": 0.7720375858785171,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -0.28440785252270473,
+    "dy_mm": 3.031536180773916,
+    "yaw_deg": 181.4657281344943,
+    "tilt_deg": 1.7924002078007182,
+    "tilt_dir_deg": 122.53374807099361
+   }
+  },
+  {
+   "split": "test",
+   "index": 7,
+   "bottle": {
+    "name": "pill_bottle_test_007",
+    "body_radius": 22.314452504780103,
+    "body_height": 98.83735511949942,
+    "neck_radius": 11.726288319607699,
+    "neck_height": 6.090456833546394,
+    "cap_radius": 17.64008609847437,
+    "cap_height": 15.588398837721282,
+    "mass_g": 63.87782973047196,
+    "cap_mass_g": 3.5092499998722797,
+    "thread_pitch": 3.8120704744695435,
+    "turns_to_open": 0.5047645411874448,
+    "break_torque": 0.022596103489718567,
+    "friction": 0.7682474584084691,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.461518504802356,
+    "dy_mm": -3.424865113539184,
+    "yaw_deg": 134.46968504564612,
+    "tilt_deg": 0.424082236174114,
+    "tilt_dir_deg": 276.1286744861212
+   }
+  },
+  {
+   "split": "test",
+   "index": 8,
+   "bottle": {
+    "name": "pill_bottle_test_008",
+    "body_radius": 14.698889824972774,
+    "body_height": 77.79578137171592,
+    "neck_radius": 16.21633476412984,
+    "neck_height": 7.327834051948833,
+    "cap_radius": 17.21633476412984,
+    "cap_height": 17.705769652554658,
+    "mass_g": 43.305218259384525,
+    "cap_mass_g": 6.5975330729356205,
+    "thread_pitch": 2.9624203729545613,
+    "turns_to_open": 0.9624068511869533,
+    "break_torque": 0.037606888135844924,
+    "friction": 1.3418363009010603,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.05808304778015483,
+    "dy_mm": 2.669747210802438,
+    "yaw_deg": 83.14018370979603,
+    "tilt_deg": 2.6076929941087634,
+    "tilt_dir_deg": 338.96423114993286
+   }
+  },
+  {
+   "split": "test",
+   "index": 9,
+   "bottle": {
+    "name": "pill_bottle_test_009",
+    "body_radius": 14.969472262910248,
+    "body_height": 82.51359624679128,
+    "neck_radius": 22.30792701823771,
+    "neck_height": 6.396235662195296,
+    "cap_radius": 27.530959024100216,
+    "cap_height": 21.26867175708994,
+    "mass_g": 66.9398125711061,
+    "cap_mass_g": 4.656781347762902,
+    "thread_pitch": 4.0637107281618405,
+    "turns_to_open": 0.7932200940189773,
+    "break_torque": 0.017914434778533724,
+    "friction": 1.018881054781616,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.5408255519000393,
+    "dy_mm": -3.734353022997258,
+    "yaw_deg": 320.2090160632317,
+    "tilt_deg": 1.8143484517289057,
+    "tilt_dir_deg": 43.106008357058265
+   }
+  },
+  {
+   "split": "test",
+   "index": 10,
+   "bottle": {
+    "name": "water_500ml_test_010",
+    "body_radius": 30.788298326450487,
+    "body_height": 97.18460625022698,
+    "neck_radius": 14.966732474368062,
+    "neck_height": 10.152717703562102,
+    "cap_radius": 17.583295163825298,
+    "cap_height": 14.648730029523637,
+    "mass_g": 200.10128004506043,
+    "cap_mass_g": 2.668120939310788,
+    "thread_pitch": 2.469638863553986,
+    "turns_to_open": 1.2521472767271309,
+    "break_torque": 0.020871802966268973,
+    "friction": 0.9388053434863896,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -0.808830199832081,
+    "dy_mm": -0.015374588957879354,
+    "yaw_deg": 34.22270666873814,
+    "tilt_deg": 2.69607657733967,
+    "tilt_dir_deg": 342.2458201931351
+   }
+  },
+  {
+   "split": "test",
+   "index": 11,
+   "bottle": {
+    "name": "water_500ml_test_011",
+    "body_radius": 35.48756855800975,
+    "body_height": 65.99384009362535,
+    "neck_radius": 12.528847694330825,
+    "neck_height": 11.89401087180729,
+    "cap_radius": 13.528847694330825,
+    "cap_height": 17.36173499738097,
+    "mass_g": 152.70792620243043,
+    "cap_mass_g": 2.607450148746515,
+    "thread_pitch": 2.4747215207765327,
+    "turns_to_open": 0.9141732933842592,
+    "break_torque": 0.03292621833439956,
+    "friction": 1.058418946192666,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.632540574035254,
+    "dy_mm": 3.3800860071553274,
+    "yaw_deg": 33.79117552096859,
+    "tilt_deg": 1.621543193313126,
+    "tilt_dir_deg": 316.87869656148143
+   }
+  },
+  {
+   "split": "test",
+   "index": 12,
+   "bottle": {
+    "name": "pill_bottle_test_012",
+    "body_radius": 15.538338513081772,
+    "body_height": 89.65977256243784,
+    "neck_radius": 16.254544026990736,
+    "neck_height": 4.37125392739524,
+    "cap_radius": 23.968533344198804,
+    "cap_height": 11.870816102350805,
+    "mass_g": 80.15076107829168,
+    "cap_mass_g": 5.3954364511153585,
+    "thread_pitch": 4.289656088257168,
+    "turns_to_open": 0.5732684849858473,
+    "break_torque": 0.07730548055866042,
+    "friction": 0.9633140364731627,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.32693495199152345,
+    "dy_mm": -1.5305751555881555,
+    "yaw_deg": 285.76593428449337,
+    "tilt_deg": 1.7816676307779162,
+    "tilt_dir_deg": 261.74381500928337
+   }
+  },
+  {
+   "split": "test",
+   "index": 13,
+   "bottle": {
+    "name": "pill_bottle_test_013",
+    "body_radius": 23.872904456981473,
+    "body_height": 50.578645380219584,
+    "neck_radius": 20.144155117999418,
+    "neck_height": 7.647722683772613,
+    "cap_radius": 21.144155117999418,
+    "cap_height": 17.649225124805167,
+    "mass_g": 74.5703299774323,
+    "cap_mass_g": 5.581002715483573,
+    "thread_pitch": 4.419557607489121,
+    "turns_to_open": 0.5053337579033435,
+    "break_torque": 0.02050720710613293,
+    "friction": 1.1082105535026385,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 1.2053571927893323,
+    "dy_mm": -4.2099165654964725,
+    "yaw_deg": 14.543887709108452,
+    "tilt_deg": 1.1308131260166698,
+    "tilt_dir_deg": 161.65117044090488
+   }
+  },
+  {
+   "split": "test",
+   "index": 14,
+   "bottle": {
+    "name": "pill_bottle_test_014",
+    "body_radius": 21.479648530684393,
+    "body_height": 98.85897892755958,
+    "neck_radius": 15.062301457140016,
+    "neck_height": 4.713795603623058,
+    "cap_radius": 16.062301457140016,
+    "cap_height": 18.5845631737182,
+    "mass_g": 52.67250229021117,
+    "cap_mass_g": 3.472531374707816,
+    "thread_pitch": 3.4708996707358244,
+    "turns_to_open": 0.7043141921250393,
+    "break_torque": 0.028645606938450772,
+    "friction": 1.1311803556176254,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -4.132948766925029,
+    "dy_mm": 4.227491478545717,
+    "yaw_deg": 244.6708543164339,
+    "tilt_deg": 1.893019287267094,
+    "tilt_dir_deg": 172.07891582079958
+   }
+  },
+  {
+   "split": "test",
+   "index": 15,
+   "bottle": {
+    "name": "pill_bottle_test_015",
+    "body_radius": 14.38895344851604,
+    "body_height": 98.25681623742992,
+    "neck_radius": 11.368474802344501,
+    "neck_height": 5.3975447273131945,
+    "cap_radius": 14.736196881543599,
+    "cap_height": 20.906540802297783,
+    "mass_g": 70.33291618299087,
+    "cap_mass_g": 4.019690999702009,
+    "thread_pitch": 4.6830608749064035,
+    "turns_to_open": 1.0013037931445894,
+    "break_torque": 0.08267751113491069,
+    "friction": 1.2605625940792728,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -3.7647054806463265,
+    "dy_mm": -0.4677353286484198,
+    "yaw_deg": 249.98395852160724,
+    "tilt_deg": 2.7566448402108694,
+    "tilt_dir_deg": 178.9849085025773
+   }
+  },
+  {
+   "split": "test",
+   "index": 16,
+   "bottle": {
+    "name": "water_500ml_test_016",
+    "body_radius": 35.54718230335748,
+    "body_height": 83.88819841412968,
+    "neck_radius": 10.226726543669413,
+    "neck_height": 14.194262153979132,
+    "cap_radius": 18.426721798462562,
+    "cap_height": 15.560080065106497,
+    "mass_g": 135.79104922322136,
+    "cap_mass_g": 2.8632646479499266,
+    "thread_pitch": 3.5193585055018186,
+    "turns_to_open": 1.127686761523122,
+    "break_torque": 0.018864580094952014,
+    "friction": 1.3255241297857787,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.5906073349332672,
+    "dy_mm": -3.962407896483917,
+    "yaw_deg": 153.6035805802233,
+    "tilt_deg": 2.7976720004511515,
+    "tilt_dir_deg": 170.61277783856823
+   }
+  },
+  {
+   "split": "test",
+   "index": 17,
+   "bottle": {
+    "name": "water_500ml_test_017",
+    "body_radius": 21.443542092372212,
+    "body_height": 82.95773925102252,
+    "neck_radius": 9.919940337279657,
+    "neck_height": 12.47831972947832,
+    "cap_radius": 10.919940337279657,
+    "cap_height": 15.671980168949068,
+    "mass_g": 104.02637253226207,
+    "cap_mass_g": 3.069135902479277,
+    "thread_pitch": 2.8082113962945425,
+    "turns_to_open": 0.9105120128955825,
+    "break_torque": 0.04581053162666325,
+    "friction": 1.1136904438096673,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.9548105633796053,
+    "dy_mm": 4.182845699102275,
+    "yaw_deg": 91.57048335635136,
+    "tilt_deg": 2.797575999567906,
+    "tilt_dir_deg": 85.9040556232131
+   }
+  },
+  {
+   "split": "test",
+   "index": 18,
+   "bottle": {
+    "name": "water_500ml_test_018",
+    "body_radius": 43.191066245438364,
+    "body_height": 80.77210704882023,
+    "neck_radius": 9.516502481703334,
+    "neck_height": 10.992972663265803,
+    "cap_radius": 15.976505965037546,
+    "cap_height": 18.029961801596286,
+    "mass_g": 152.40784457228472,
+    "cap_mass_g": 1.9974138634284202,
+    "thread_pitch": 3.245957504472,
+    "turns_to_open": 0.8458821765499688,
+    "break_torque": 0.01403385640600256,
+    "friction": 1.2775983868180214,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 3.592266545413679,
+    "dy_mm": -0.1155796007492782,
+    "yaw_deg": 13.95496565442663,
+    "tilt_deg": 1.6176131175141606,
+    "tilt_dir_deg": 224.85902140502438
+   }
+  },
+  {
+   "split": "test",
+   "index": 19,
+   "bottle": {
+    "name": "pill_bottle_test_019",
+    "body_radius": 18.928780308091653,
+    "body_height": 80.33930977250205,
+    "neck_radius": 16.32257552388759,
+    "neck_height": 4.564506477822841,
+    "cap_radius": 24.688637651620116,
+    "cap_height": 10.425684959562865,
+    "mass_g": 48.4404574393646,
+    "cap_mass_g": 3.5089988017056486,
+    "thread_pitch": 5.280253512331424,
+    "turns_to_open": 0.9819625886671648,
+    "break_torque": 0.04479638494292588,
+    "friction": 0.743949503545371,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.388735009461195,
+    "dy_mm": 2.181796662898461,
+    "yaw_deg": 89.06691296201271,
+    "tilt_deg": 0.06163443213762365,
+    "tilt_dir_deg": 342.7999516999847
+   }
+  },
+  {
+   "split": "test",
+   "index": 20,
+   "bottle": {
+    "name": "pill_bottle_test_020",
+    "body_radius": 16.424291034836184,
+    "body_height": 60.84292753826327,
+    "neck_radius": 12.314960318336999,
+    "neck_height": 4.904175076042071,
+    "cap_radius": 27.951155860497973,
+    "cap_height": 11.679666167579978,
+    "mass_g": 48.48156801627547,
+    "cap_mass_g": 5.817547897620049,
+    "thread_pitch": 4.573929012287843,
+    "turns_to_open": 0.9426792252916107,
+    "break_torque": 0.03378194853546268,
+    "friction": 1.178092926810903,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.33678569923930013,
+    "dy_mm": -4.091844527658831,
+    "yaw_deg": 300.31985078870514,
+    "tilt_deg": 1.5664491561119636,
+    "tilt_dir_deg": 207.34994857562387
+   }
+  },
+  {
+   "split": "test",
+   "index": 21,
+   "bottle": {
+    "name": "pill_bottle_test_021",
+    "body_radius": 23.959953006302605,
+    "body_height": 54.52628032043391,
+    "neck_radius": 15.002772198764148,
+    "neck_height": 6.440189424089387,
+    "cap_radius": 23.921067840586105,
+    "cap_height": 19.851845942198167,
+    "mass_g": 50.13864950806697,
+    "cap_mass_g": 4.782341790379771,
+    "thread_pitch": 5.325396689214195,
+    "turns_to_open": 0.9036695640760135,
+    "break_torque": 0.07347131477415271,
+    "friction": 0.7715717595456274,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.41328612864977554,
+    "dy_mm": -0.15174151861184804,
+    "yaw_deg": 57.42892768694519,
+    "tilt_deg": 0.6428094126937046,
+    "tilt_dir_deg": 101.87068871593543
+   }
+  },
+  {
+   "split": "test",
+   "index": 22,
+   "bottle": {
+    "name": "pill_bottle_test_022",
+    "body_radius": 15.071505675480847,
+    "body_height": 51.487091919674796,
+    "neck_radius": 17.14527867973739,
+    "neck_height": 4.915905259972896,
+    "cap_radius": 18.14527867973739,
+    "cap_height": 20.400640512623287,
+    "mass_g": 57.74884511995998,
+    "cap_mass_g": 3.681726217114899,
+    "thread_pitch": 4.676969230276304,
+    "turns_to_open": 0.6807119509307482,
+    "break_torque": 0.08018659691099653,
+    "friction": 0.7727651708121657,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 2.3494367991066154,
+    "dy_mm": -3.357955334380529,
+    "yaw_deg": 185.5110569301827,
+    "tilt_deg": 0.17264587294586586,
+    "tilt_dir_deg": 115.93974153161754
+   }
+  },
+  {
+   "split": "test",
+   "index": 23,
+   "bottle": {
+    "name": "water_500ml_test_023",
+    "body_radius": 38.859918959278446,
+    "body_height": 92.9832502169795,
+    "neck_radius": 12.054247614460763,
+    "neck_height": 11.050299877640873,
+    "cap_radius": 13.054247614460763,
+    "cap_height": 11.551129851283498,
+    "mass_g": 148.9601096854554,
+    "cap_mass_g": 2.955171411437685,
+    "thread_pitch": 1.973372774664703,
+    "turns_to_open": 0.6723248043020147,
+    "break_torque": 0.057584113083161324,
+    "friction": 0.8854531096365535,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 2.4322875870838896,
+    "dy_mm": -1.737706444270045,
+    "yaw_deg": 129.06835663440816,
+    "tilt_deg": 1.595592302219142,
+    "tilt_dir_deg": 284.55718988642826
+   }
+  },
+  {
+   "split": "test",
+   "index": 24,
+   "bottle": {
+    "name": "pill_bottle_test_024",
+    "body_radius": 16.969376125942215,
+    "body_height": 79.99837227133165,
+    "neck_radius": 14.513970883659121,
+    "neck_height": 5.395693041245218,
+    "cap_radius": 15.513970883659121,
+    "cap_height": 18.220404741269107,
+    "mass_g": 62.15817902431781,
+    "cap_mass_g": 3.5616171280032507,
+    "thread_pitch": 3.25285212735235,
+    "turns_to_open": 0.6674923584827568,
+    "break_torque": 0.04190503082043718,
+    "friction": 0.8291608272549348,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -2.1237431198921053,
+    "dy_mm": -2.520861365672177,
+    "yaw_deg": 16.587879227779855,
+    "tilt_deg": 0.9084689950298109,
+    "tilt_dir_deg": 348.4371399881205
+   }
+  },
+  {
+   "split": "test",
+   "index": 25,
+   "bottle": {
+    "name": "pill_bottle_test_025",
+    "body_radius": 26.037713302010662,
+    "body_height": 60.823014164263846,
+    "neck_radius": 17.509854808802103,
+    "neck_height": 6.853383242198872,
+    "cap_radius": 20.321620531036135,
+    "cap_height": 14.878549220924125,
+    "mass_g": 74.75231426925679,
+    "cap_mass_g": 5.189933320299771,
+    "thread_pitch": 4.826114078011239,
+    "turns_to_open": 0.7146462433529854,
+    "break_torque": 0.023449465669203858,
+    "friction": 0.9055194588868027,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.2535210710660136,
+    "dy_mm": -3.010997009284689,
+    "yaw_deg": 202.5178842973027,
+    "tilt_deg": 2.8395528071657603,
+    "tilt_dir_deg": 143.7536899392183
+   }
+  },
+  {
+   "split": "test",
+   "index": 26,
+   "bottle": {
+    "name": "pill_bottle_test_026",
+    "body_radius": 19.401551943995642,
+    "body_height": 94.08790302335333,
+    "neck_radius": 20.862001709647195,
+    "neck_height": 6.287909585521692,
+    "cap_radius": 21.862001709647195,
+    "cap_height": 13.387051082966364,
+    "mass_g": 46.078968458524706,
+    "cap_mass_g": 4.472336566162505,
+    "thread_pitch": 3.6397949106407452,
+    "turns_to_open": 0.573498535682899,
+    "break_torque": 0.017122623865569005,
+    "friction": 1.1826057817427096,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 3.776811711855677,
+    "dy_mm": 3.023560728281341,
+    "yaw_deg": 67.66768206167347,
+    "tilt_deg": 0.27876889878002953,
+    "tilt_dir_deg": 114.03335535931231
+   }
+  },
+  {
+   "split": "test",
+   "index": 27,
+   "bottle": {
+    "name": "water_500ml_test_027",
+    "body_radius": 27.91264335928885,
+    "body_height": 74.64900581427842,
+    "neck_radius": 10.959611942654188,
+    "neck_height": 13.330229302543012,
+    "cap_radius": 18.326285352478095,
+    "cap_height": 14.797545573330265,
+    "mass_g": 161.1178305876869,
+    "cap_mass_g": 2.25648638073415,
+    "thread_pitch": 2.298345768912305,
+    "turns_to_open": 1.0580205879637286,
+    "break_torque": 0.019958967853960976,
+    "friction": 1.3174144431927597,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 2.3550947847501753,
+    "dy_mm": -1.0882113066463948,
+    "yaw_deg": 205.81321865661295,
+    "tilt_deg": 2.125065969895755,
+    "tilt_dir_deg": 114.22512231384117
+   }
+  },
+  {
+   "split": "test",
+   "index": 28,
+   "bottle": {
+    "name": "pill_bottle_test_028",
+    "body_radius": 14.10967761564801,
+    "body_height": 52.227718593398315,
+    "neck_radius": 12.168352377793216,
+    "neck_height": 5.323202480866347,
+    "cap_radius": 20.404918028378844,
+    "cap_height": 13.079821337501377,
+    "mass_g": 55.93672777506254,
+    "cap_mass_g": 3.621476460090845,
+    "thread_pitch": 5.297361242580626,
+    "turns_to_open": 0.6968902161260846,
+    "break_torque": 0.01412254547666718,
+    "friction": 0.7093858976701315,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.7914874855099532,
+    "dy_mm": 1.5652757364526506,
+    "yaw_deg": 12.283272622608541,
+    "tilt_deg": 0.7778243434353967,
+    "tilt_dir_deg": 289.33074947640654
+   }
+  },
+  {
+   "split": "test",
+   "index": 29,
+   "bottle": {
+    "name": "water_500ml_test_029",
+    "body_radius": 21.148408482336407,
+    "body_height": 63.064841793183454,
+    "neck_radius": 12.251192589033494,
+    "neck_height": 13.638875956017442,
+    "cap_radius": 16.862354442460784,
+    "cap_height": 19.45085323351911,
+    "mass_g": 201.3856168546441,
+    "cap_mass_g": 2.7538544773228386,
+    "thread_pitch": 2.1444624078583794,
+    "turns_to_open": 0.8494312561212122,
+    "break_torque": 0.014407669970033898,
+    "friction": 1.3398932276220719,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 3.3465419049740994,
+    "dy_mm": 3.4071995218707727,
+    "yaw_deg": 95.63114392570807,
+    "tilt_deg": 2.99960471718316,
+    "tilt_dir_deg": 63.94790679775347
+   }
+  },
+  {
+   "split": "test",
+   "index": 30,
+   "bottle": {
+    "name": "pill_bottle_test_030",
+    "body_radius": 15.47326802212458,
+    "body_height": 48.79242084681741,
+    "neck_radius": 14.295805396109161,
+    "neck_height": 6.812112523871534,
+    "cap_radius": 15.295805396109161,
+    "cap_height": 14.726525623808126,
+    "mass_g": 65.59710572928836,
+    "cap_mass_g": 6.196116853782568,
+    "thread_pitch": 3.996606161420922,
+    "turns_to_open": 0.6152562542485343,
+    "break_torque": 0.07290287678597307,
+    "friction": 0.7825778206265751,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 2.962624291321406,
+    "dy_mm": -0.33495626154658,
+    "yaw_deg": 332.9122817364434,
+    "tilt_deg": 1.126543472426196,
+    "tilt_dir_deg": 140.22899761382962
+   }
+  },
+  {
+   "split": "test",
+   "index": 31,
+   "bottle": {
+    "name": "pill_bottle_test_031",
+    "body_radius": 13.084999262299482,
+    "body_height": 61.72306856500472,
+    "neck_radius": 11.412640626378353,
+    "neck_height": 4.021744667924003,
+    "cap_radius": 26.189470543022473,
+    "cap_height": 16.345521106117225,
+    "mass_g": 52.72602876060407,
+    "cap_mass_g": 4.694343482846267,
+    "thread_pitch": 5.138667112318257,
+    "turns_to_open": 0.605936771777194,
+    "break_torque": 0.0103401585486391,
+    "friction": 0.9484598240242326,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -2.152254564981275,
+    "dy_mm": 4.772646309018162,
+    "yaw_deg": 317.49513746014946,
+    "tilt_deg": 0.08159865773337216,
+    "tilt_dir_deg": 234.2916797351824
+   }
+  },
+  {
+   "split": "test",
+   "index": 32,
+   "bottle": {
+    "name": "pill_bottle_test_032",
+    "body_radius": 15.889179819151977,
+    "body_height": 92.95161408860805,
+    "neck_radius": 18.655415068894975,
+    "neck_height": 6.256874388908746,
+    "cap_radius": 21.658676458584736,
+    "cap_height": 21.441769253149655,
+    "mass_g": 51.60121627330108,
+    "cap_mass_g": 4.2957711147907816,
+    "thread_pitch": 4.264744462516898,
+    "turns_to_open": 0.520175591323995,
+    "break_torque": 0.018788914686690326,
+    "friction": 0.975726575221507,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.601908826933611,
+    "dy_mm": -4.8181960132835275,
+    "yaw_deg": 312.72146081711014,
+    "tilt_deg": 0.6140120770690575,
+    "tilt_dir_deg": 44.62542448278974
+   }
+  },
+  {
+   "split": "test",
+   "index": 33,
+   "bottle": {
+    "name": "pill_bottle_test_033",
+    "body_radius": 26.210011891853284,
+    "body_height": 51.58740911324016,
+    "neck_radius": 16.316039894738942,
+    "neck_height": 4.1636075001006665,
+    "cap_radius": 17.316039894738942,
+    "cap_height": 17.711704908565014,
+    "mass_g": 70.80700799948968,
+    "cap_mass_g": 6.132782340472483,
+    "thread_pitch": 4.97575314660835,
+    "turns_to_open": 0.7541021436851842,
+    "break_torque": 0.02544415233374956,
+    "friction": 1.1832499628908866,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -2.1021127205861223,
+    "dy_mm": 0.8663815928992422,
+    "yaw_deg": 228.56595469460242,
+    "tilt_deg": 0.03705587055128867,
+    "tilt_dir_deg": 17.148890375130815
+   }
+  },
+  {
+   "split": "test",
+   "index": 34,
+   "bottle": {
+    "name": "pill_bottle_test_034",
+    "body_radius": 19.11718297881249,
+    "body_height": 54.080506303817195,
+    "neck_radius": 12.729877919273033,
+    "neck_height": 5.315788426969347,
+    "cap_radius": 13.729877919273033,
+    "cap_height": 14.020169372475511,
+    "mass_g": 44.01054612856958,
+    "cap_mass_g": 5.468196639218958,
+    "thread_pitch": 4.836502945239327,
+    "turns_to_open": 0.6054894099358786,
+    "break_torque": 0.016651261830062703,
+    "friction": 1.0892952660912545,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -3.860695840809071,
+    "dy_mm": -1.0246798136464,
+    "yaw_deg": 241.9404747564312,
+    "tilt_deg": 1.12907527157448,
+    "tilt_dir_deg": 319.51582653673256
+   }
+  },
+  {
+   "split": "test",
+   "index": 35,
+   "bottle": {
+    "name": "pill_bottle_test_035",
+    "body_radius": 16.993399547881786,
+    "body_height": 72.53637506717916,
+    "neck_radius": 21.310059839476594,
+    "neck_height": 6.237018507995045,
+    "cap_radius": 22.310059839476594,
+    "cap_height": 13.970984135857696,
+    "mass_g": 66.14250553146083,
+    "cap_mass_g": 4.155957261844056,
+    "thread_pitch": 3.5474731290767725,
+    "turns_to_open": 0.5791830196049577,
+    "break_torque": 0.029146831023473072,
+    "friction": 1.1673372174052936,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.299739045649102,
+    "dy_mm": -3.1922948075387136,
+    "yaw_deg": 212.96330413711138,
+    "tilt_deg": 1.52587054075557,
+    "tilt_dir_deg": 33.10242725819489
+   }
+  },
+  {
+   "split": "test",
+   "index": 36,
+   "bottle": {
+    "name": "pill_bottle_test_036",
+    "body_radius": 26.908607260209894,
+    "body_height": 90.92018175944042,
+    "neck_radius": 18.512790869765364,
+    "neck_height": 5.745814036601913,
+    "cap_radius": 19.512790869765364,
+    "cap_height": 13.341623162618225,
+    "mass_g": 62.25743102657483,
+    "cap_mass_g": 5.846800928908897,
+    "thread_pitch": 4.834504591195103,
+    "turns_to_open": 0.7848588956382441,
+    "break_torque": 0.061476881874487486,
+    "friction": 0.7895020670706031,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.5211936440378464,
+    "dy_mm": 3.0444018297580584,
+    "yaw_deg": 72.31878022262809,
+    "tilt_deg": 2.031824444069397,
+    "tilt_dir_deg": 215.04061673915444
+   }
+  },
+  {
+   "split": "test",
+   "index": 37,
+   "bottle": {
+    "name": "water_500ml_test_037",
+    "body_radius": 32.21361472939476,
+    "body_height": 65.567191077401,
+    "neck_radius": 8.720568949109573,
+    "neck_height": 8.151024888632776,
+    "cap_radius": 17.94052712652109,
+    "cap_height": 11.155634689003811,
+    "mass_g": 131.42820466796888,
+    "cap_mass_g": 3.056783536625007,
+    "thread_pitch": 1.9527733193934314,
+    "turns_to_open": 0.9804491186329656,
+    "break_torque": 0.016079033396634884,
+    "friction": 0.7276874055827347,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.573842044288934,
+    "dy_mm": 2.8940743967468183,
+    "yaw_deg": 2.564579187103768,
+    "tilt_deg": 1.2456538619757689,
+    "tilt_dir_deg": 320.16354569248705
+   }
+  },
+  {
+   "split": "test",
+   "index": 38,
+   "bottle": {
+    "name": "water_500ml_test_038",
+    "body_radius": 25.06339445165166,
+    "body_height": 61.67951877407327,
+    "neck_radius": 13.504466853571905,
+    "neck_height": 12.946811776530007,
+    "cap_radius": 16.564298392920307,
+    "cap_height": 12.90912961626707,
+    "mass_g": 159.57619426604802,
+    "cap_mass_g": 3.0043186022509074,
+    "thread_pitch": 3.8073452102417944,
+    "turns_to_open": 0.9900020656510468,
+    "break_torque": 0.026856282364595713,
+    "friction": 1.1436231312675416,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.61821466184949,
+    "dy_mm": -0.2798086241391138,
+    "yaw_deg": 39.07572848902782,
+    "tilt_deg": 2.4620500611058804,
+    "tilt_dir_deg": 311.2002138079735
+   }
+  },
+  {
+   "split": "test",
+   "index": 39,
+   "bottle": {
+    "name": "pill_bottle_test_039",
+    "body_radius": 21.95116520456997,
+    "body_height": 49.52495157903291,
+    "neck_radius": 13.156148259902062,
+    "neck_height": 6.986970297839713,
+    "cap_radius": 26.853808380997627,
+    "cap_height": 17.228185855861554,
+    "mass_g": 45.86716034921912,
+    "cap_mass_g": 5.18492582412347,
+    "thread_pitch": 2.974103634393804,
+    "turns_to_open": 0.5997157676276429,
+    "break_torque": 0.040325589989241406,
+    "friction": 1.2624458986093874,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.21771852526988056,
+    "dy_mm": 2.366288764810898,
+    "yaw_deg": 245.3659242574285,
+    "tilt_deg": 2.5486403048417836,
+    "tilt_dir_deg": 349.4320357769618
+   }
+  },
+  {
+   "split": "test",
+   "index": 40,
+   "bottle": {
+    "name": "pill_bottle_test_040",
+    "body_radius": 23.960066265602904,
+    "body_height": 98.42060983046179,
+    "neck_radius": 11.630849521654433,
+    "neck_height": 5.211732619124486,
+    "cap_radius": 15.438723084252384,
+    "cap_height": 18.432565883574963,
+    "mass_g": 49.253803920051624,
+    "cap_mass_g": 5.196547206881778,
+    "thread_pitch": 3.5891280590627876,
+    "turns_to_open": 0.5103919285705014,
+    "break_torque": 0.012117399761496653,
+    "friction": 1.24486558668442,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -0.03966742279391955,
+    "dy_mm": 3.494662102482936,
+    "yaw_deg": 10.850703122510712,
+    "tilt_deg": 1.9455616921890484,
+    "tilt_dir_deg": 53.42813689356878
+   }
+  },
+  {
+   "split": "test",
+   "index": 41,
+   "bottle": {
+    "name": "pill_bottle_test_041",
+    "body_radius": 26.06568664464744,
+    "body_height": 55.95336119829532,
+    "neck_radius": 19.106168907640374,
+    "neck_height": 4.068830183185485,
+    "cap_radius": 20.481786670882702,
+    "cap_height": 15.370981668535366,
+    "mass_g": 59.429496691391584,
+    "cap_mass_g": 3.2766359699905188,
+    "thread_pitch": 2.8360685313549374,
+    "turns_to_open": 0.9035051176116405,
+    "break_torque": 0.08586139666648426,
+    "friction": 1.1724562654793012,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 1.7770563107726414,
+    "dy_mm": -3.56268428309775,
+    "yaw_deg": 68.30890954519022,
+    "tilt_deg": 2.189932375740656,
+    "tilt_dir_deg": 268.6385266438558
+   }
+  },
+  {
+   "split": "test",
+   "index": 42,
+   "bottle": {
+    "name": "water_500ml_test_042",
+    "body_radius": 28.11754365921344,
+    "body_height": 115.69518362070819,
+    "neck_radius": 9.337752244618304,
+    "neck_height": 10.783865524940834,
+    "cap_radius": 11.308438539398821,
+    "cap_height": 20.249165703819042,
+    "mass_g": 155.417948785887,
+    "cap_mass_g": 3.0921571361046323,
+    "thread_pitch": 2.6953873205835057,
+    "turns_to_open": 0.8384850558027567,
+    "break_torque": 0.05257249759996332,
+    "friction": 0.6792402044333362,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 0.4322046378449045,
+    "dy_mm": 0.1677644509070042,
+    "yaw_deg": 86.35831559833566,
+    "tilt_deg": 0.054205479961267455,
+    "tilt_dir_deg": 352.76415856088016
+   }
+  },
+  {
+   "split": "test",
+   "index": 43,
+   "bottle": {
+    "name": "pill_bottle_test_043",
+    "body_radius": 26.058671857816446,
+    "body_height": 69.38275725785034,
+    "neck_radius": 22.032683473628836,
+    "neck_height": 6.828931968779026,
+    "cap_radius": 25.33743604949658,
+    "cap_height": 11.87801333637844,
+    "mass_g": 80.93732805918229,
+    "cap_mass_g": 5.526688610978205,
+    "thread_pitch": 4.2073350826910945,
+    "turns_to_open": 0.9390084656838795,
+    "break_torque": 0.01774683634727309,
+    "friction": 0.9496289860806048,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -0.9256399937725188,
+    "dy_mm": 1.2417111056431889,
+    "yaw_deg": 176.81784054923602,
+    "tilt_deg": 2.5153468263581744,
+    "tilt_dir_deg": 316.533373424514
+   }
+  },
+  {
+   "split": "test",
+   "index": 44,
+   "bottle": {
+    "name": "pill_bottle_test_044",
+    "body_radius": 15.621630041862094,
+    "body_height": 59.624423718120106,
+    "neck_radius": 12.247180316921986,
+    "neck_height": 6.486772669632856,
+    "cap_radius": 15.972980179001368,
+    "cap_height": 21.581981472577063,
+    "mass_g": 39.67585890295413,
+    "cap_mass_g": 5.102376462304665,
+    "thread_pitch": 3.478214174097955,
+    "turns_to_open": 0.8398568961478072,
+    "break_torque": 0.06630142369343146,
+    "friction": 0.9340906796299318,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 4.8649766046561655,
+    "dy_mm": -4.83743638360642,
+    "yaw_deg": 272.4682626142884,
+    "tilt_deg": 2.7618535899098635,
+    "tilt_dir_deg": 146.9251807964288
+   }
+  },
+  {
+   "split": "test",
+   "index": 45,
+   "bottle": {
+    "name": "water_500ml_test_045",
+    "body_radius": 27.87806555766059,
+    "body_height": 108.12969853035263,
+    "neck_radius": 16.0994087332315,
+    "neck_height": 10.004787320599963,
+    "cap_radius": 18.67142733531717,
+    "cap_height": 12.722970334110048,
+    "mass_g": 176.7648788662727,
+    "cap_mass_g": 1.876525732346142,
+    "thread_pitch": 3.2585261999567203,
+    "turns_to_open": 0.83416670605396,
+    "break_torque": 0.025167999750042927,
+    "friction": 1.2669532601353892,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -4.109850460820445,
+    "dy_mm": -0.20446053074958392,
+    "yaw_deg": 217.4226545527227,
+    "tilt_deg": 2.4283183769013252,
+    "tilt_dir_deg": 179.71163151961582
+   }
+  },
+  {
+   "split": "test",
+   "index": 46,
+   "bottle": {
+    "name": "water_500ml_test_046",
+    "body_radius": 27.54389572308196,
+    "body_height": 82.66016870158111,
+    "neck_radius": 9.147245056395342,
+    "neck_height": 12.212615987932892,
+    "cap_radius": 10.147245056395342,
+    "cap_height": 19.758190840841216,
+    "mass_g": 110.32809880683087,
+    "cap_mass_g": 3.124844486054124,
+    "thread_pitch": 3.4446259166715025,
+    "turns_to_open": 1.105700079585718,
+    "break_torque": 0.01936337153230215,
+    "friction": 0.8426186543746601,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": 1.976817513619629,
+    "dy_mm": 3.9650685908954326,
+    "yaw_deg": 58.02172020379166,
+    "tilt_deg": 1.0154057423476854,
+    "tilt_dir_deg": 263.7211254859259
+   }
+  },
+  {
+   "split": "test",
+   "index": 47,
+   "bottle": {
+    "name": "water_500ml_test_047",
+    "body_radius": 22.51822972110465,
+    "body_height": 82.42501463550502,
+    "neck_radius": 9.615668197732093,
+    "neck_height": 15.791952806455944,
+    "cap_radius": 15.831512335600767,
+    "cap_height": 18.04985455086447,
+    "mass_g": 105.16454317159743,
+    "cap_mass_g": 1.7945947288447126,
+    "thread_pitch": 2.364905824986397,
+    "turns_to_open": 0.7901635702805052,
+    "break_torque": 0.007511482063302576,
+    "friction": 1.032513228942752,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -2.673663012998796,
+    "dy_mm": 1.8759926748139097,
+    "yaw_deg": 326.0978753196959,
+    "tilt_deg": 2.422084484657051,
+    "tilt_dir_deg": 179.52941506755292
+   }
+  },
+  {
+   "split": "test",
+   "index": 48,
+   "bottle": {
+    "name": "water_500ml_test_048",
+    "body_radius": 30.61401705377739,
+    "body_height": 74.48625752496245,
+    "neck_radius": 10.254282514114843,
+    "neck_height": 10.625046610101382,
+    "cap_radius": 19.838948128356137,
+    "cap_height": 19.64097777280458,
+    "mass_g": 134.66542185169695,
+    "cap_mass_g": 1.845689789282475,
+    "thread_pitch": 3.0211373275758873,
+    "turns_to_open": 1.0449044604470723,
+    "break_torque": 0.012991063303750588,
+    "friction": 0.7627729490013346,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.55,
+     0.75,
+     0.95,
+     0.6
+    ],
+    "cap_rgba": [
+     0.1,
+     0.35,
+     0.85,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.7931773797748174,
+    "dy_mm": 1.2454126742572722,
+    "yaw_deg": 352.1576644095813,
+    "tilt_deg": 0.4084250338239681,
+    "tilt_dir_deg": 290.39077799537637
+   }
+  },
+  {
+   "split": "test",
+   "index": 49,
+   "bottle": {
+    "name": "pill_bottle_test_049",
+    "body_radius": 22.989474312525438,
+    "body_height": 92.98386609169796,
+    "neck_radius": 18.14113644041702,
+    "neck_height": 6.911165408038122,
+    "cap_radius": 21.64192683170062,
+    "cap_height": 16.042015356304145,
+    "mass_g": 57.73111266414625,
+    "cap_mass_g": 5.454216581878535,
+    "thread_pitch": 3.4899683815231914,
+    "turns_to_open": 0.5846328288474427,
+    "break_torque": 0.05844294389118676,
+    "friction": 0.9271286468143521,
+    "shape": "round",
+    "cap_offset": 15.0,
+    "body_rgba": [
+     0.9,
+     0.55,
+     0.15,
+     0.8
+    ],
+    "cap_rgba": [
+     0.95,
+     0.95,
+     0.95,
+     1.0
+    ],
+    "visual_mesh": null,
+    "cap_visual_mesh": null,
+    "mesh_scale": 0.001
+   },
+   "placement": {
+    "dx_mm": -1.5236224023391554,
+    "dy_mm": -0.7934391285277353,
+    "yaw_deg": 13.055805996266162,
+    "tilt_deg": 0.6462275520714431,
+    "tilt_dir_deg": 204.24275939659123
+   }
+  }
+ ]
+}

@@ -170,6 +170,8 @@ under [Known issues](docs/hardware.md#known-issues).
 |---|---|
 | [docs/tasks.md](docs/tasks.md) | A first task, the row reference, variants, studio tuning |
 | [docs/internals.md](docs/internals.md) | The `[N,J,K]` engine, primitives, three backends |
+| [docs/objects.md](docs/objects.md) | Real bottles in simulation: measuring one, the thread model, `sim --obj` |
+| [docs/env.md](docs/env.md) | Policy episodes for pi0.5: what the policy sees, train/test splits, cameras, LeRobot demo recording |
 | [docs/hardware.md](docs/hardware.md) | Configuring a new hand, zeroing, `HandConfig`, gains, servo setup, status, known issues |
 
 ## Citation

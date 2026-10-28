@@ -34,3 +34,7 @@ CMakeUserPresets.json
 # Source clips for the README animations. The mp4s are tens of MB each and git
 # keeps them forever; only the encoded media/*.webp belongs in the repo.
 media/*.mp4
+
+# Scenes written by cartesian_hand.objects, rebuilt from bottles.json each run.
+assets/cartesian_hand/_scene_*.xml
+data/

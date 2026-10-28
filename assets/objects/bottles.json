@@ -1,0 +1,39 @@
+{
+  "_comment": "One entry per real object, in millimetres, grams and newton-metres. Measure with calipers; see docs/objects.md. The two entries below are typical sizes, not measurements of a specific bottle -- replace them with yours.",
+
+  "water_500ml": {
+    "body_radius": 32.0,
+    "body_height": 90.0,
+    "shape": "round",
+    "neck_radius": 12.5,
+    "neck_height": 12.0,
+    "cap_radius": 15.0,
+    "cap_height": 15.0,
+    "mass_g": 150.0,
+    "cap_mass_g": 2.5,
+    "thread_pitch": 3.0,
+    "turns_to_open": 1.0,
+    "break_torque": 0.02,
+    "friction": 1.0,
+    "body_rgba": [0.55, 0.75, 0.95, 0.6],
+    "cap_rgba": [0.1, 0.35, 0.85, 1.0]
+  },
+
+  "pill_bottle": {
+    "body_radius": 20.0,
+    "body_height": 75.0,
+    "shape": "round",
+    "neck_radius": 17.0,
+    "neck_height": 6.0,
+    "cap_radius": 21.0,
+    "cap_height": 16.0,
+    "mass_g": 60.0,
+    "cap_mass_g": 5.0,
+    "thread_pitch": 4.0,
+    "turns_to_open": 0.75,
+    "break_torque": 0.03,
+    "friction": 1.0,
+    "body_rgba": [0.9, 0.55, 0.15, 0.8],
+    "cap_rgba": [0.95, 0.95, 0.95, 1.0]
+  }
+}

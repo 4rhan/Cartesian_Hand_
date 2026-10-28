@@ -4,7 +4,8 @@ Get a driver
 ------------
     from cartesian_hand.servo import open_driver
 
-    bus = open_driver("/dev/ttyACM0")        # real hardware
+    bus = open_driver("/dev/ttyACM0")        # real hardware, HLS servos
+    bus = open_driver("/dev/ttyACM0", sts=True)  # real hardware, STS3215s
     bus = open_driver("mock", mock=True)     # offline model, no hardware
 
 Both return an object with the same five methods. `open_driver` is the only
@@ -143,7 +144,8 @@ def _import_ft_servo() -> type:
         ) from e
 
 
-def open_driver(port: str, mock: bool = False, **mock_kwargs) -> Any:
+def open_driver(port: str, mock: bool = False, sts: bool = False,
+                **mock_kwargs) -> Any:
     """Open the bus. This is the entry point -- start here.
 
     Returns `Any`, not a union: `FtServo` and `MockServo` share the five-method
@@ -159,6 +161,9 @@ def open_driver(port: str, mock: bool = False, **mock_kwargs) -> Any:
     out in plug order, so a fixed one silently addresses whichever hand
     enumerated first. `config.HAND_2.port` is already a by-id path.
 
+    `sts=True` opens Feetech STS servos (STS3215) with `sts_servo.StsServo`,
+    pure Python over pyserial, instead of the compiled HLS driver. Same surface.
+
     `mock_kwargs` go to `MockServo` and are ignored on hardware. The useful one
     is `time_scale`, which runs the model faster than real time.
 
@@ -166,6 +171,11 @@ def open_driver(port: str, mock: bool = False, **mock_kwargs) -> Any:
     """
     if mock:
         return MockServo(port, **mock_kwargs)
+    if sts:
+        # Lazy for the same reason as `_import_ft_servo`: pyserial is only
+        # needed by the hardware that uses it.
+        from .sts_servo import StsServo
+        return StsServo(port)
     return _import_ft_servo()(port)
 
 

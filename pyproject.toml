@@ -16,6 +16,9 @@ studio = ["viser", "mujoco"]   # studio.py imports both at module scope: the pag
                                # is viser, but it draws the mujoco meshes
 camera = ["opencv-python"]     # only for the studio page's --camera window
 gui = ["viser"]                # scripts/ft_servo_tools/cli.py gui subcommand
+sts = ["pyserial"]             # sts_servo.py: Feetech STS3215 servos, open_driver(sts=True)
+rl = ["mujoco", "gymnasium>=1.0"]   # env.py's CapEnv, for VLA evaluation and RL
+record = ["mujoco", "gymnasium>=1.0", "lerobot[dataset]>=0.6"]   # record.py: LeRobot v3.0 demos
 
 [tool.scikit-build]
 cmake.build-type = "Release"
